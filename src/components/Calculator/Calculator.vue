@@ -1,7 +1,11 @@
 <template>
   <div>
-    <calculator-display />
-    <calculator-keyboard />
+    <div class="calculator-container">
+      <h1 className="text-3xl font-bold underline">Hello ddd!</h1>
+
+      <calculator-display class="h-1/4" value="2000" />
+      <calculator-keyboard />
+    </div>
   </div>
 </template>
 
@@ -13,4 +17,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.calculator-container {
+  height: 700px;
+  width: 400px;
+  border: 1px solid gray;
+}
+</style>
