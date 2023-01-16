@@ -2,4 +2,4 @@
 import Calculator from "./components/Calculator/Calculator.vue";
 </script>
 
-<template><Calculator /></template>
+<template><calculator /></template>

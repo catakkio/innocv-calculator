@@ -1,7 +1,16 @@
-<template><div></div></template>
+<template>
+  <div>
+    <calculator-display />
+    <calculator-keyboard />
+  </div>
+</template>
 
 <script>
-export default {};
+import CalculatorDisplay from "./_components/CalculatorDisplay.vue";
+import CalculatorKeyboard from "./_components/CalculatorKeyboard.vue";
+export default {
+  components: { CalculatorKeyboard, CalculatorDisplay },
+};
 </script>
 
 <style></style>
