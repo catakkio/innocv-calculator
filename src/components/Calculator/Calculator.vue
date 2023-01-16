@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="calculator-container">
-      <h1 className="text-3xl font-bold underline">Hello ddd!</h1>
-
-      <calculator-display class="h-1/4" value="2000" />
-      <calculator-keyboard />
+      <div class="w-full h-full">
+        <calculator-display class="h-1/4" value="2000" />
+        <calculator-keyboard />
+      </div>
     </div>
   </div>
 </template>
