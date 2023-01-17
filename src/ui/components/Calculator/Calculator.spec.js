@@ -132,6 +132,54 @@ describe("calculate", () => {
 
     expect(result).toBeTruthy();
   });
+
+  it("subtraction between two numbers", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const subtractionOperationBtn = within(keyboard).getByText("-");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(subtractionOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("9", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("subtraction between two numbers even if second number is bigger than first one", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const subtractionOperationBtn = within(keyboard).getByText("-");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(subtractionOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("-9", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
 });
 
 const renderComponent = () => {
