@@ -28,7 +28,7 @@
       <btn-operator value="+" />
     </div>
     <div class="flex space-x-4 px-5 py-3">
-      <btn-number :value="0" size="double" />
+      <btn-number :value="0" size="large" />
       <btn-operator class="items-right" value="=" />
     </div>
   </div>
