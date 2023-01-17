@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex space-x-4 px-5 py-3">
-      <btn-operator value="AC" />
+      <btn-operator value="AC" @click="calculatorStore.resetTotal" />
       <btn-operator value="%" />
       <btn-operator value="," />
       <btn-operator value="÷" />
@@ -37,8 +37,14 @@
 <script>
 import BtnNumber from "./BtnNumber.vue";
 import BtnOperator from "./BtnOperator.vue";
+import { useCalculatorStore } from "@/store/CalculatorStore.ts";
 
 export default {
+  setup() {
+    const calculatorStore = useCalculatorStore();
+    return { calculatorStore };
+  },
+
   components: { BtnNumber, BtnOperator },
 };
 </script>
