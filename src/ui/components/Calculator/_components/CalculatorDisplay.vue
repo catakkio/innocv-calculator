@@ -1,7 +1,7 @@
 <template>
   <div class="flex items-end justify-end mb-5 px-5">
     <p class="text-6xl">
-      {{ calculatorStore.displayedNumber }}
+      {{ calculatorStore.displayedValue }}
     </p>
   </div>
 </template>

@@ -64,6 +64,8 @@ describe("calculate", () => {
     const numberThreeBtn = within(keyboard).getByText("3");
     const numberFourBtn = within(keyboard).getByText("4");
     const sumOperationBtn = within(keyboard).getByText("+");
+    const equalOperationBtn = within(keyboard).getByText("=");
+
     const display = screen.getByTestId("calculator-display");
 
     await fireEvent.click(numberThreeBtn);
@@ -71,6 +73,7 @@ describe("calculate", () => {
     await fireEvent.click(sumOperationBtn);
     await fireEvent.click(numberTwoBtn);
     await fireEvent.click(numberFourBtn);
+    await fireEvent.click(equalOperationBtn);
 
     const result = await within(display).getByText("57", {
       exact: true,
@@ -85,6 +88,7 @@ describe("calculate", () => {
     const numberThreeBtn = within(keyboard).getByText("3");
     const numberFourBtn = within(keyboard).getByText("4");
     const sumOperationBtn = within(keyboard).getByText("+");
+    const equalOperationBtn = within(keyboard).getByText("=");
     const display = screen.getByTestId("calculator-display");
 
     await fireEvent.click(numberThreeBtn);
@@ -94,6 +98,33 @@ describe("calculate", () => {
     await fireEvent.click(numberFourBtn);
     await fireEvent.click(sumOperationBtn);
     await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("60", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("sum between three integers without pressing equal button", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const sumOperationBtn = within(keyboard).getByText("+");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(sumOperationBtn);
 
     const result = await within(display).getByText("60", {
       exact: true,
