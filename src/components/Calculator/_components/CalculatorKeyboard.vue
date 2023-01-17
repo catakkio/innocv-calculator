@@ -1,40 +1,45 @@
 <template>
   <div>
     <div class="flex space-x-4 px-5 py-3">
-      <calculator-button :value="7" />
-      <calculator-button :value="8" />
-      <calculator-button :value="9" />
-      <calculator-button value="÷" />
+      <btn-operator value="AC" />
+      <btn-operator value="%" />
+      <btn-operator value="," />
+      <btn-operator value="÷" />
     </div>
 
     <div class="flex space-x-4 px-5 py-3">
-      <calculator-button :value="4" />
-      <calculator-button :value="5" />
-      <calculator-button :value="6" />
-      <calculator-button value="X" />
+      <btn-number :value="7" />
+      <btn-number :value="8" />
+      <btn-number :value="9" />
+      <btn-operator value="x" />
     </div>
 
     <div class="flex space-x-4 px-5 py-3">
-      <calculator-button :value="1" />
-      <calculator-button :value="2" />
-      <calculator-button :value="3" />
-      <calculator-button value="-" />
+      <btn-number :value="4" />
+      <btn-number :value="5" />
+      <btn-number :value="6" />
+      <btn-operator value="-" />
     </div>
 
     <div class="flex space-x-4 px-5 py-3">
-      <calculator-button :value="0" />
-      <calculator-button value="," />
-      <calculator-button value="+" />
-      <calculator-button value="=" />
+      <btn-number :value="1" />
+      <btn-number :value="2" />
+      <btn-number :value="3" />
+      <btn-operator value="+" />
+    </div>
+    <div class="flex space-x-4 px-5 py-3">
+      <btn-number :value="0" size="double" />
+      <btn-operator class="items-right" value="=" />
     </div>
   </div>
 </template>
 
 <script>
-import CalculatorButton from "./CalculatorButton.vue";
+import BtnNumber from "./BtnNumber.vue";
+import BtnOperator from "./BtnOperator.vue";
 
 export default {
-  components: { CalculatorButton },
+  components: { BtnNumber, BtnOperator },
 };
 </script>
 

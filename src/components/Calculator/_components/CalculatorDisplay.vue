@@ -1,6 +1,8 @@
 <template>
-  <div>
-    {{ value }}
+  <div class="flex items-end justify-end mb-5 px-5">
+    <p class="text-6xl">
+      {{ value }}
+    </p>
   </div>
 </template>
 
@@ -12,6 +14,13 @@ export default {
       required: true,
     },
   },
+  // methods: {
+  //   onClickButton(event) {
+  //     if(typeof value === Number){
+  //       this.$emit("number", value);
+  //     }
+  //   },
+  // },
 };
 </script>
 

@@ -2,7 +2,7 @@
   <div>
     <div class="calculator-container">
       <div class="w-full h-full">
-        <calculator-display class="h-1/4" value="2000" />
+        <calculator-display class="h-1/5" value="0" />
         <calculator-keyboard />
       </div>
     </div>
