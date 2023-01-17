@@ -30,17 +30,15 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
       } else {
         this.displayedValue += digit;
       }
-      function removeZeroAsFirstChar(text: string) {}
     },
 
     calculateDisplayedValue() {
       switch (this.operatorToApply) {
         case Operator.Sum:
           this.previousTotal = this.sum();
-
           break;
-
-        default:
+        case Operator.Subtraction:
+          this.previousTotal = this.subtraction();
           break;
       }
       this.displayedValue = this.previousTotal?.toString();
@@ -48,6 +46,10 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
 
     sum() {
       return Number(this.previousTotal) + Number(this.displayedValue);
+    },
+
+    subtraction() {
+      return Number(this.previousTotal) - Number(this.displayedValue);
     },
 
     equal() {
