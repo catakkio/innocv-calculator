@@ -19,20 +19,40 @@ describe("Calculator", () => {
       const displayedNumber = within(display).getByText("12");
       expect(displayedNumber).toBeTruthy();
     });
-  });
 
-  it("do not displays more zero in a raw like 000", async () => {
+    it("do not displays more zero in a raw like 000", async () => {
+      renderComponent();
+      const keyboard = screen.getByTestId("calculator-keyboard");
+      const numberZeroBtn = within(keyboard).getByText("0");
+      const display = screen.getByTestId("calculator-display");
+
+      await fireEvent.click(numberZeroBtn);
+      await fireEvent.click(numberZeroBtn);
+      await fireEvent.click(numberZeroBtn);
+
+      const displayedNumber = await within(display).queryByText("000");
+      expect(displayedNumber).toBeFalsy();
+    });
+  });
+});
+describe("reset button", () => {
+  it("reset function prints 0 on screen", async () => {
     renderComponent();
     const keyboard = screen.getByTestId("calculator-keyboard");
-    const numberZeroBtn = within(keyboard).getByText("0");
+    const resetBtn = within(keyboard).getByText("AC");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberThwoBtn = within(keyboard).getByText("2");
     const display = screen.getByTestId("calculator-display");
 
-    await fireEvent.click(numberZeroBtn);
-    await fireEvent.click(numberZeroBtn);
-    await fireEvent.click(numberZeroBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThwoBtn);
+    await fireEvent.click(resetBtn);
 
-    const displayedNumber = await within(display).queryByText("000");
-    expect(displayedNumber).toBeFalsy();
+    const displayedNumber = await within(display).getByText("0", {
+      exact: true,
+    });
+    expect(displayedNumber).toBeTruthy();
   });
 });
 

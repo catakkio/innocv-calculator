@@ -10,12 +10,6 @@
 import { useCalculatorStore } from "@/store/CalculatorStore.ts";
 
 export default {
-  props: {
-    value: {
-      type: String || Number,
-      required: true,
-    },
-  },
   setup() {
     const calculatorStore = useCalculatorStore();
     return { calculatorStore };
