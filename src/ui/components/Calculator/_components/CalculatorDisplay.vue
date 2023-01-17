@@ -1,12 +1,14 @@
 <template>
   <div class="flex items-end justify-end mb-5 px-5">
     <p class="text-6xl">
-      {{ value }}
+      {{ calculatorStore.displayedNumber }}
     </p>
   </div>
 </template>
 
 <script>
+import { useCalculatorStore } from "@/store/CalculatorStore.ts";
+
 export default {
   props: {
     value: {
@@ -14,13 +16,10 @@ export default {
       required: true,
     },
   },
-  // methods: {
-  //   onClickButton(event) {
-  //     if(typeof value === Number){
-  //       this.$emit("number", value);
-  //     }
-  //   },
-  // },
+  setup() {
+    const calculatorStore = useCalculatorStore();
+    return { calculatorStore };
+  },
 };
 </script>
 

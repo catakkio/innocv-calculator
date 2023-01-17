@@ -2,8 +2,8 @@
   <div>
     <div class="calculator-container">
       <div class="w-full h-full">
-        <calculator-display class="h-1/5" :value="calculatorStore.total" />
-        <calculator-keyboard />
+        <calculator-display class="h-1/5" data-testid="calculator-display" />
+        <calculator-keyboard data-testid="calculator-keyboard" />
       </div>
     </div>
   </div>

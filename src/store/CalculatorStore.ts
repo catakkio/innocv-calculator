@@ -3,6 +3,7 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
   state: () => {
     return {
       total: 0,
+      displayedNumber: "0",
       operationToApply: "",
       numberToApply: 0,
     };
@@ -14,8 +15,15 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
     // sum,
     // subtract,
     // percentage,
-    resetTotal() {
+    reset() {
       this.total = 0;
+      this.displayedNumber = "0";
+    },
+    printDigit(value: string) {
+      if (this.displayedNumber === "0") {
+        this.displayedNumber = "";
+      }
+      this.displayedNumber += value;
     },
   },
   getters: {},
