@@ -12,6 +12,7 @@
 <script>
 import CalculatorDisplay from "./_components/CalculatorDisplay.vue";
 import CalculatorKeyboard from "./_components/CalculatorKeyboard.vue";
+
 export default {
   components: { CalculatorKeyboard, CalculatorDisplay },
 };
