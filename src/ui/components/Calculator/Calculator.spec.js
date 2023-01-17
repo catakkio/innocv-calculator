@@ -16,8 +16,8 @@ describe("Calculator", () => {
       await fireEvent.click(numberOneBtn);
       await fireEvent.click(numberTwoBtn);
 
-      const displayedNumber = within(display).getByText("12");
-      expect(displayedNumber).toBeTruthy();
+      const displayedValue = within(display).getByText("12");
+      expect(displayedValue).toBeTruthy();
     });
 
     it("do not displays more zero in a raw like 000", async () => {
@@ -30,8 +30,8 @@ describe("Calculator", () => {
       await fireEvent.click(numberZeroBtn);
       await fireEvent.click(numberZeroBtn);
 
-      const displayedNumber = await within(display).queryByText("000");
-      expect(displayedNumber).toBeFalsy();
+      const displayedValue = await within(display).queryByText("000");
+      expect(displayedValue).toBeFalsy();
     });
   });
 });
@@ -41,18 +41,65 @@ describe("reset button", () => {
     const keyboard = screen.getByTestId("calculator-keyboard");
     const resetBtn = within(keyboard).getByText("AC");
     const numberThreeBtn = within(keyboard).getByText("3");
-    const numberThwoBtn = within(keyboard).getByText("2");
+    const numberTwoBtn = within(keyboard).getByText("2");
     const display = screen.getByTestId("calculator-display");
 
     await fireEvent.click(numberThreeBtn);
     await fireEvent.click(numberThreeBtn);
-    await fireEvent.click(numberThwoBtn);
+    await fireEvent.click(numberTwoBtn);
     await fireEvent.click(resetBtn);
 
-    const displayedNumber = await within(display).getByText("0", {
+    const displayedValue = await within(display).getByText("0", {
       exact: true,
     });
-    expect(displayedNumber).toBeTruthy();
+    expect(displayedValue).toBeTruthy();
+  });
+});
+
+describe("calculate", () => {
+  it("sum between two integers", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const sumOperationBtn = within(keyboard).getByText("+");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(numberFourBtn);
+
+    const result = await within(display).getByText("57", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+  it("sum between three integers", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const sumOperationBtn = within(keyboard).getByText("+");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+
+    const result = await within(display).getByText("60", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
   });
 });
 
