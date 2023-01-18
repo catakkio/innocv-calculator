@@ -303,11 +303,84 @@ describe("calculate", () => {
     expect(result).toBeTruthy();
   });
 
-  it("handle division for 0");
+  it("divide with integer as result", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberSixBtn = within(keyboard).getByText("6");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const divideOperationBtn = within(keyboard).getByText("÷");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
 
-  it("handle multiplications too big");
+    await fireEvent.click(numberSixBtn);
+    await fireEvent.click(numberSixBtn);
+    await fireEvent.click(divideOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(equalOperationBtn);
 
-  it("handle change of text size if too much numbers");
+    const result = await within(display).getByText("22", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("divide with float as result", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberSixBtn = within(keyboard).getByText("6");
+    const divideOperationBtn = within(keyboard).getByText("÷");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberSixBtn);
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(divideOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("21.3333333", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("divide with float as result, second case", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberFiveBtn = within(keyboard).getByText("5");
+    const numberSixBtn = within(keyboard).getByText("6");
+    const divideOperationBtn = within(keyboard).getByText("÷");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberSixBtn);
+    await fireEvent.click(numberFiveBtn);
+    await fireEvent.click(divideOperationBtn);
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("16.25", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("divide and sum");
+  it("divide and multiplicate");
+  it("multiplicate and divide ");
+
+  it("division for 0");
+
+  it("multiplications too big");
+
+  it("change of text size if too much numbers");
 });
 
 const renderComponent = () => {
