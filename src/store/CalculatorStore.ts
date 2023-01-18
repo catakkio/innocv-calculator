@@ -37,7 +37,7 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
       }
     },
 
-    calculatedisplayedTotal() {
+    calculatedisplayedTotal(operator: Operator) {
       switch (this.operatorToApply) {
         case Operator.Sum:
           this.total = sum(this.total, this.displayedTotal);
@@ -51,35 +51,21 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
         case Operator.Division:
           this.total = division(this.total, this.displayedTotal);
           break;
+        default:
+          this.total = Number(this.displayedTotal);
+          break;
       }
+      this.operatorToApply = operator;
+      this.isLastInputAnOperator = true;
       this.displayedTotal = this.total?.toString();
     },
 
-    division() {
-      const floatPrecision = 10000000;
-      const parsedResult =
-        Math.round(
-          (Number(this.total) * floatPrecision) / Number(this.displayedTotal)
-        ) / floatPrecision;
-      return parsedResult;
-    },
-
-    equal() {
-      this.calculatedisplayedTotal();
-    },
-
-    setOperatorToApply(operator: Operator) {
-      debugger;
-      if (this.total === 0) {
-        this.total = Number(this.displayedTotal);
-      } else {
-        this.calculatedisplayedTotal();
-      }
-
+    setNextOperatorToApply(operator: Operator) {
       this.operatorToApply = operator;
       this.isLastInputAnOperator = true;
-      console.log("operation", this.operatorToApply);
     },
   },
-  getters: {},
+  getters: {
+    getDisplayedTotal: (state) => state.displayedTotal,
+  },
 });

@@ -469,6 +469,61 @@ describe("calculate", () => {
     expect(result).toBeTruthy();
   });
 
+  it("combination multiplication equal and then sum", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberFiveBtn = within(keyboard).getByText("5");
+    const sumOperationBtn = within(keyboard).getByText("+");
+    const multiplicationOperationBtn = within(keyboard).getByText("*");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberFiveBtn);
+    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(numberFiveBtn);
+    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(equalOperationBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("52", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+  it("combination multiplication equal and then sum case 2", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberFiveBtn = within(keyboard).getByText("5");
+    const sumOperationBtn = within(keyboard).getByText("+");
+    const multiplicationOperationBtn = within(keyboard).getByText("*");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberFiveBtn);
+    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(numberFiveBtn);
+    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(equalOperationBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(sumOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("54", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
   it("divide with integer as result", async () => {
     renderComponent();
     const keyboard = screen.getByTestId("calculator-keyboard");

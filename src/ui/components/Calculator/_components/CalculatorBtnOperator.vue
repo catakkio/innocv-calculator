@@ -27,9 +27,10 @@ export default {
       if (this.operator === Operator.Reset) {
         this.calculatorStore.reset();
       } else if (this.operator === Operator.Equal) {
-        this.calculatorStore.equal();
+        this.calculatorStore.calculatedisplayedTotal();
       } else {
-        this.calculatorStore.setOperatorToApply(this.operator);
+        this.calculatorStore.calculatedisplayedTotal();
+        this.calculatorStore.setNextOperatorToApply(this.operator);
       }
     },
   },
