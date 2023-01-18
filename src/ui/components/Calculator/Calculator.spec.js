@@ -234,6 +234,30 @@ describe("calculate", () => {
     const keyboard = screen.getByTestId("calculator-keyboard");
     const numberTwoBtn = within(keyboard).getByText("2");
     const numberThreeBtn = within(keyboard).getByText("3");
+    const multiplicationOperationBtn = within(keyboard).getByText("*");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("138", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("sum and then moltiplication", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
     const sumOperationBtn = within(keyboard).getByText("+");
     const multiplicationOperationBtn = within(keyboard).getByText("*");
     const equalOperationBtn = within(keyboard).getByText("=");
@@ -254,11 +278,12 @@ describe("calculate", () => {
     expect(result).toBeTruthy();
   });
 
-  it("handle sum and then moltiplication", async () => {
+  it("multiplication and then sum", async () => {
     renderComponent();
     const keyboard = screen.getByTestId("calculator-keyboard");
     const numberTwoBtn = within(keyboard).getByText("2");
     const numberThreeBtn = within(keyboard).getByText("3");
+    const sumOperationBtn = within(keyboard).getByText("+");
     const multiplicationOperationBtn = within(keyboard).getByText("*");
     const equalOperationBtn = within(keyboard).getByText("=");
     const display = screen.getByTestId("calculator-display");
@@ -266,12 +291,12 @@ describe("calculate", () => {
     await fireEvent.click(numberTwoBtn);
     await fireEvent.click(multiplicationOperationBtn);
     await fireEvent.click(numberThreeBtn);
-    await fireEvent.click(multiplicationOperationBtn);
+    await fireEvent.click(sumOperationBtn);
     await fireEvent.click(numberTwoBtn);
     await fireEvent.click(numberThreeBtn);
     await fireEvent.click(equalOperationBtn);
 
-    const result = await within(display).getByText("138", {
+    const result = await within(display).getByText("29", {
       exact: true,
     });
 
