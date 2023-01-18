@@ -3,7 +3,7 @@ enum Operator {
   Sum = "+",
   Subtraction = "-",
   Division = "÷",
-  Moltiplication = "*",
+  Multiplication = "*",
   Percentage = "%",
   Reset = "AC",
   Comma = ",",

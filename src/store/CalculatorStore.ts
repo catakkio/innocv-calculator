@@ -40,6 +40,9 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
         case Operator.Subtraction:
           this.previousTotal = this.subtraction();
           break;
+        case Operator.Multiplication:
+          this.previousTotal = this.multiplication();
+          break;
       }
       this.displayedValue = this.previousTotal?.toString();
     },
@@ -50,6 +53,9 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
 
     subtraction() {
       return Number(this.previousTotal) - Number(this.displayedValue);
+    },
+    multiplication() {
+      return Number(this.previousTotal) * Number(this.displayedValue);
     },
 
     equal() {

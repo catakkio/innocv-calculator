@@ -11,7 +11,7 @@
       <btn-number :value="7" />
       <btn-number :value="8" />
       <btn-number :value="9" />
-      <btn-operator :operator="operation.Moltiplication" />
+      <btn-operator :operator="operation.Multiplication" />
     </div>
 
     <div class="flex space-x-4 px-5 py-3">
