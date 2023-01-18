@@ -1,6 +1,6 @@
 # innocv-calculator
 
-<img src="./src/ui/assets/calculator.png" alt="calculator icon" width="192" width="192"/>
+<img src="calculator.png" alt="calculator icon" width="192" width="192"/>
 
 Calculator developed in VUE to execute simple arithmetic operations.
 <b>Warning:</b> module and percentage function have not been implemented yet
