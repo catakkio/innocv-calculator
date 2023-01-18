@@ -27,7 +27,7 @@ export default {
 <style scoped>
 .calculator-container {
   height: 700px;
-  width: 400px;
+  width: 410px;
   border: 1px solid gray;
 }
 </style>

@@ -6,7 +6,7 @@ enum Operator {
   Multiplication = "*",
   Percentage = "%",
   Reset = "AC",
-  Comma = ",",
+  Module = "±",
 }
 
 export default Operator;

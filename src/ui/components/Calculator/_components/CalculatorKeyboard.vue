@@ -2,8 +2,9 @@
   <div>
     <div class="flex space-x-4 px-5 py-3">
       <btn-operator :operator="operation.Reset" />
+      <btn-operator :operator="operation.Module" />
       <btn-operator :operator="operation.Percentage" />
-      <btn-operator :operator="operation.Comma" />
+
       <btn-operator :operator="operation.Division" />
     </div>
 
@@ -30,6 +31,7 @@
 
     <div class="flex space-x-4 px-5 py-3">
       <btn-number :value="0" size="large" />
+      <btn-number value="." />
       <btn-operator class="items-right" :operator="operation.Equal" />
     </div>
   </div>

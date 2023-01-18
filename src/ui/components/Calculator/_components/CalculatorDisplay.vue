@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-end justify-end mb-5 px-5">
+  <div class="flex items-end justify-end mb-5 px-6">
     <p
       :class="{
         'text-7xl': calculatorStore.displayedValue.length < 9,

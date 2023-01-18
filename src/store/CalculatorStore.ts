@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import Operator from "@/utils/Operator";
-import { removeFirstCharZero, replaceDotWithComma } from "@/utils/Utils";
+import { removeFirstCharZero } from "@/utils/Utils";
 
 export const useCalculatorStore = defineStore("CalculatorStore", {
   state: () => {
