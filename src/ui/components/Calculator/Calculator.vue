@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="calculator-container noselect">
+    <div class="calculator-container noselect rounded-lg">
       <div class="w-full h-full">
         <calculator-display class="h-1/5" data-testid="calculator-display" />
         <calculator-keyboard data-testid="calculator-keyboard" />
@@ -29,6 +29,7 @@ export default {
   height: 700px;
   width: 410px;
   border: 1px solid gray;
+  box-shadow: 10px 10px 10px grey;
 }
 
 .noselect {

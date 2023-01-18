@@ -24,7 +24,6 @@ export default {
   },
   methods: {
     onOperatorClick() {
-      debugger;
       if (this.operator === Operator.Reset) {
         this.calculatorStore.reset();
       } else if (this.operator === Operator.Equal) {

@@ -3,13 +3,5 @@ import Calculator from "./ui/components/Calculator/Calculator.vue";
 </script>
 
 <template>
-  <div>
-    <calculator />
-  </div>
+  <calculator />
 </template>
-
-<style>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-</style>

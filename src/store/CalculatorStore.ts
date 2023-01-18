@@ -74,8 +74,6 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
     },
 
     setOperatorToApply(operator: Operator) {
-      debugger;
-
       if (this.previousTotal === undefined) {
         this.previousTotal = Number(this.displayedValue);
       } else {
