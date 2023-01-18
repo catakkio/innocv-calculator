@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import Operator from "@/utils/Operator";
-import { removeFirstCharZero } from "@/utils/common";
+import { removeFirstCharZero, replaceDotWithComma } from "@/utils/Utils";
 
 export const useCalculatorStore = defineStore("CalculatorStore", {
   state: () => {
@@ -27,7 +27,7 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
       if (this.isLastInputAnOperator) {
         this.displayedValue = digit.toString();
         this.isLastInputAnOperator = false;
-      } else {
+      } else if (this.displayedValue.length < 9) {
         this.displayedValue += digit;
       }
     },
@@ -43,6 +43,9 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
         case Operator.Multiplication:
           this.previousTotal = this.multiplication();
           break;
+        case Operator.Division:
+          this.previousTotal = this.division();
+          break;
       }
       this.displayedValue = this.previousTotal?.toString();
     },
@@ -56,6 +59,14 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
     },
     multiplication() {
       return Number(this.previousTotal) * Number(this.displayedValue);
+    },
+
+    division() {
+      const restPrecision = 10000000;
+      const parsedResult =
+        Math.round((this.previousTotal * restPrecision) / this.displayedValue) /
+        restPrecision;
+      return parsedResult;
     },
 
     equal() {
