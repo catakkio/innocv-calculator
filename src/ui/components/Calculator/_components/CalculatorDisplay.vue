@@ -5,9 +5,9 @@
         'text-7xl': calculatorStore.getDisplayedTotal.length < 9,
         'text-6xl':
           calculatorStore.getDisplayedTotal.length >= 9 &&
-          calculatorStore.getDisplayedTotal.length < 12,
+          calculatorStore.getDisplayedTotal.length < 11,
         'text-5xl':
-          calculatorStore.getDisplayedTotal.length >= 12 &&
+          calculatorStore.getDisplayedTotal.length >= 11 &&
           calculatorStore.getDisplayedTotal.length < 15,
         'text-3xl': calculatorStore.getDisplayedTotal.length >= 15,
       }"

@@ -195,7 +195,7 @@ describe("calculate", () => {
     expect(result).toBeTruthy();
   });
 
-  it("subtraction between two numbers", async () => {
+  it("subtraction between two numbers case 1", async () => {
     renderComponent();
     const keyboard = screen.getByTestId("calculator-keyboard");
     const numberTwoBtn = within(keyboard).getByText("2");
@@ -213,6 +213,30 @@ describe("calculate", () => {
     await fireEvent.click(equalOperationBtn);
 
     const result = await within(display).getByText("9", {
+      exact: true,
+    });
+
+    expect(result).toBeTruthy();
+  });
+
+  it("subtraction between two numbers case 2", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberTwoBtn = within(keyboard).getByText("2");
+    const numberThreeBtn = within(keyboard).getByText("3");
+    const numberSixBtn = within(keyboard).getByText("6");
+    const subtractionOperationBtn = within(keyboard).getByText("-");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
+
+    await fireEvent.click(numberSixBtn);
+    await fireEvent.click(numberSixBtn);
+    await fireEvent.click(numberTwoBtn);
+    await fireEvent.click(subtractionOperationBtn);
+    await fireEvent.click(numberThreeBtn);
+    await fireEvent.click(equalOperationBtn);
+
+    const result = await within(display).getByText("659", {
       exact: true,
     });
 
@@ -593,15 +617,26 @@ describe("calculate", () => {
     expect(result).toBeTruthy();
   });
 
-  it("divide and sum");
-  it("divide and multiplicate");
-  it("multiplicate and divide ");
+  it("division for 0", async () => {
+    renderComponent();
+    const keyboard = screen.getByTestId("calculator-keyboard");
+    const numberFourBtn = within(keyboard).getByText("4");
+    const numberZeroBtn = within(keyboard).getByText("0");
+    const divideOperationBtn = within(keyboard).getByText("÷");
+    const equalOperationBtn = within(keyboard).getByText("=");
+    const display = screen.getByTestId("calculator-display");
 
-  it("division for 0");
+    await fireEvent.click(numberFourBtn);
+    await fireEvent.click(divideOperationBtn);
+    await fireEvent.click(numberZeroBtn);
+    await fireEvent.click(equalOperationBtn);
 
-  it("multiplications too big");
+    const result = await within(display).getByText("Infinity", {
+      exact: true,
+    });
 
-  it("change of text size if too much numbers");
+    expect(result).toBeTruthy();
+  });
 });
 
 const renderComponent = () => {

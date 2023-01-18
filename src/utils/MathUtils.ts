@@ -10,7 +10,9 @@ export const sum = (
   val2: Number | string,
   floatPrecision: number = defaultFloatPrecision
 ): number => {
-  return ((Number(val1) + Number(val2)) * floatPrecision) / floatPrecision;
+  return (
+    Math.round((Number(val1) + Number(val2)) * floatPrecision) / floatPrecision
+  );
 };
 
 export const subtraction = (
@@ -19,7 +21,7 @@ export const subtraction = (
   floatPrecision: number = defaultFloatPrecision
 ): number => {
   return (
-    Math.fround((Number(val1) - Number(val2)) * floatPrecision) / floatPrecision
+    Math.round((Number(val1) - Number(val2)) * floatPrecision) / floatPrecision
   );
 };
 
@@ -28,7 +30,9 @@ export const multiplication = (
   val2: Number | string,
   floatPrecision: number = defaultFloatPrecision
 ): number => {
-  return (Number(val1) * Number(val2) * floatPrecision) / floatPrecision;
+  return (
+    Math.round(Number(val1) * Number(val2) * floatPrecision) / floatPrecision
+  );
 };
 
 export const division = (
