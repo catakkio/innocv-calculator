@@ -1,18 +1,18 @@
 <template>
-  <div class="flex items-end justify-end mb-5 px-6">
+  <div class="flex items-end justify-end mb-6 px-6">
     <p
       :class="{
-        'text-7xl': calculatorStore.displayedValue.length < 9,
+        'text-7xl': calculatorStore.displayedTotal.length < 9,
         'text-6xl':
-          calculatorStore.displayedValue.length >= 9 &&
-          calculatorStore.displayedValue.length < 12,
+          calculatorStore.displayedTotal.length >= 9 &&
+          calculatorStore.displayedTotal.length < 12,
         'text-5xl':
-          calculatorStore.displayedValue.length >= 12 &&
-          calculatorStore.displayedValue.length < 15,
-        'text-3xl': calculatorStore.displayedValue.length >= 15,
+          calculatorStore.displayedTotal.length >= 12 &&
+          calculatorStore.displayedTotal.length < 15,
+        'text-3xl': calculatorStore.displayedTotal.length >= 15,
       }"
     >
-      {{ calculatorStore.displayedValue }}
+      {{ calculatorStore.displayedTotal }}
     </p>
   </div>
 </template>
