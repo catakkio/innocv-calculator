@@ -51,6 +51,12 @@ export const useCalculatorStore = defineStore("CalculatorStore", {
         case Operator.Division:
           this.total = division(this.total, this.displayedTotal);
           break;
+        case Operator.Module:
+          console.warn("Module operation to be implemented");
+          break;
+        case Operator.Percentage:
+          console.warn("Percentage operation to be implemented");
+          break;
         default:
           this.total = Number(this.displayedTotal);
           break;
